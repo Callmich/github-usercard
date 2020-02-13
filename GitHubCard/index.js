@@ -4,12 +4,11 @@
 */
 axios.get('https://api.github.com/users/Callmich')
 .then(response => {
-  console.log(response.data);
-  //map return here when at that step
-  // response.data.map(item => {
-  let newcard = createGitHubCard(response.data)
-    cardEntry.append(newcard);
-  // })
+  console.log(response.data)
+  cardEntry.append(createGitHubCard(response.data))
+
+  // let newcard = createGitHubCard(response.data)
+  //   cardEntry.append(newcard);
 })
 .catch(error =>{
   console.log('the data was not returned, error')
@@ -63,8 +62,7 @@ function createGitHubCard(userData){
         userName = document.createElement('h3'),
         userHandle = document.createElement('p'),
         userLocation = document.createElement('p'),
-        userEmail = document.createElement('a'),
-        userHref = document.createAttribute('href'),
+        // userEmail = document.createElement('a'),
         userProfile = document.createElement('p'),
         userFollowers = document.createElement('p'),
         userFollowing = document.createElement('p'),
@@ -89,13 +87,12 @@ function createGitHubCard(userData){
   userImage.src = userData.avatar_url;
   userName.textContent = userData.name;
   userHandle.textContent = userData.login;
-  userLocation.textContent = userData.location;
-  userProfile.textContent = userEmail;
-  userEmail.setAttribute(userHref, userData.html_url); //look into quotes
-  userEmail.innerText = userData.html_url; //look into textcontent
-  userFollowers.textContent = userData.followers;
-  userFollowing.textContent = userData.following;
-  userBio.textContent = userData.bio;
+  userLocation.textContent = `Location: ${userData.location}`;
+  userProfile.textContent = userData.html_url;
+  // userEmail.textContent = userData.html_url;
+  userFollowers.textContent = `Followers: ${userData.followers}`;
+  userFollowing.textContent = `Following: ${userData.following}`;
+  userBio.textContent = `Bio: ${userData.bio}`;
 
   return newCard
 
