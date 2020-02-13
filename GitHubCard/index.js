@@ -43,9 +43,7 @@ const followersArray = [];
     <h3 class="name">{users name}</h3>
     <p class="username">{users user name}</p>
     <p>Location: {users location}</p>
-    <p>Profile:  
-      <a href={address to users github page}>{address to users github page}</a>
-    </p>
+    <p>Profile: <a href={address to users github page}>{address to users github page}</a></p>
     <p>Followers: {users followers count}</p>
     <p>Following: {users following count}</p>
     <p>Bio: {users bio}</p>
@@ -53,6 +51,40 @@ const followersArray = [];
 </div>
 
 */
+
+function createGitHubCard(userData){
+  const newCard = document.createElement('div'),
+        userImage = document.createElement('img'),
+        userInfo = document.createElement('div'),
+        userName = document.createElement('h3'),
+        userHandle = document.createElement('p'),
+        userLocation = document.createElement('p'),
+        userProfile = document.createElement('p'),
+        userFollowers = document.createElement('p'),
+        userFollowing = document.createElement('p'),
+        userBio = document.createElement('p');
+
+
+  newCard.append(userImage);
+  newCard.append(userInfo);
+  userInfo.append(userName);
+  userInfo.append(userHandle);
+  userInfo.append(userLocation);
+  userInfo.append(userProfile);
+  userInfo.append(userFollowers);
+  userInfo.append(userFollowing);
+  userInfo.append(userBio);
+
+  newCard.classList.add('card');
+  userInfo.classList.add('card-info');
+  userName.classList.add('name');
+  userHandle.classList.add('username');
+
+
+
+  return newCard
+
+}
 
 
 
