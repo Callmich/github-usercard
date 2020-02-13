@@ -89,9 +89,10 @@ function createGitHubCard(userData){
   userName.textContent = userData.name;
   userHandle.textContent = userData.login;
   userLocation.textContent = `Location: ${userData.location}`;
-  // userProfile.textContent = 'Profile ';
+  
   userEmail.setAttribute('href', userData.html_url);
   userEmail.innerText = userData.html_url;
+  // userProfile.textContent = `Profile: ${userEmail}`;
   userFollowers.textContent = `Followers: ${userData.followers}`;
   userFollowing.textContent = `Following: ${userData.following}`;
   userBio.textContent = `Bio: ${userData.bio}`;
