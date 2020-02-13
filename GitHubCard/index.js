@@ -62,7 +62,7 @@ function createGitHubCard(userData){
         userName = document.createElement('h3'),
         userHandle = document.createElement('p'),
         userLocation = document.createElement('p'),
-        // userEmail = document.createElement('a'),
+        userEmail = document.createElement('a'),
         userProfile = document.createElement('p'),
         userFollowers = document.createElement('p'),
         userFollowing = document.createElement('p'),
@@ -75,6 +75,7 @@ function createGitHubCard(userData){
   userInfo.append(userHandle);
   userInfo.append(userLocation);
   userInfo.append(userProfile);
+  userProfile.append(userEmail);
   userInfo.append(userFollowers);
   userInfo.append(userFollowing);
   userInfo.append(userBio);
@@ -88,8 +89,9 @@ function createGitHubCard(userData){
   userName.textContent = userData.name;
   userHandle.textContent = userData.login;
   userLocation.textContent = `Location: ${userData.location}`;
-  userProfile.textContent = userData.html_url;
-  // userEmail.textContent = userData.html_url;
+  // userProfile.textContent = 'Profile ';
+  userEmail.setAttribute('href', userData.html_url);
+  userEmail.innerText = userData.html_url;
   userFollowers.textContent = `Followers: ${userData.followers}`;
   userFollowing.textContent = `Following: ${userData.following}`;
   userBio.textContent = `Bio: ${userData.bio}`;
