@@ -2,14 +2,18 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-// axios.get('https://api.github.com/users/Callmich')
-// .then(response => {
-//   console.log(response.data)
-//   //map return here when at that step
-// })
-// .catch(error =>{
-//   console.log('the data was not returned, error')
-// })
+axios.get('https://api.github.com/users/Callmich')
+.then(response => {
+  console.log(response.data);
+  //map return here when at that step
+  // response.data.map(item => {
+  let newcard = createGitHubCard(response.data)
+    cardEntry.append(newcard);
+  // })
+})
+.catch(error =>{
+  console.log('the data was not returned, error')
+})
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
