@@ -59,6 +59,8 @@ function createGitHubCard(userData){
         userName = document.createElement('h3'),
         userHandle = document.createElement('p'),
         userLocation = document.createElement('p'),
+        userEmail = document.createElement('a'),
+        userHref = document.createAttribute('href'),
         userProfile = document.createElement('p'),
         userFollowers = document.createElement('p'),
         userFollowing = document.createElement('p'),
@@ -80,12 +82,22 @@ function createGitHubCard(userData){
   userName.classList.add('name');
   userHandle.classList.add('username');
 
-
+  userImage.src = userData.avatar_url;
+  userName.textContent = userData.name;
+  userHandle.textContent = userData.login;
+  userLocation.textContent = userData.location;
+  userProfile.textContent = userEmail;
+  userEmail.setAttribute(userHref, userData.html_url); //look into quotes
+  userEmail.innerText = userData.html_url; //look into textcontent
+  userFollowers.textContent = userData.followers;
+  userFollowing.textContent = userData.following;
+  userBio.textContent = userData.bio;
 
   return newCard
 
 }
 
+const cardEntry = document.querySelector('.cards')
 
 
 /* List of LS Instructors Github username's: 
