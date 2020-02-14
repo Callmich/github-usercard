@@ -35,7 +35,25 @@ axios.get('https://api.github.com/users/Callmich')
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [  
+  `tetondan`,
+  `dustinmyers`,
+  `justsml`,
+  `luishrd`,
+  `bigknell`
+];
+
+followersArray.map(name => {
+ axios.get(`https://api.github.com/users/${name}`)
+.then(response => {
+    console.log(response.data)
+    cardEntry.append(createGitHubCard(response.data))
+  
+  })
+  .catch(error =>{
+    console.log('the data was not returned, error')
+  })
+})
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -69,16 +87,7 @@ function createGitHubCard(userData){
         userBio = document.createElement('p');
 
 
-  newCard.append(userImage);
-  newCard.append(userInfo);
-  userInfo.append(userName);
-  userInfo.append(userHandle);
-  userInfo.append(userLocation);
-  userInfo.append(userProfile);
-  userProfile.append(userEmail);
-  userInfo.append(userFollowers);
-  userInfo.append(userFollowing);
-  userInfo.append(userBio);
+
 
   newCard.classList.add('card');
   userInfo.classList.add('card-info');
@@ -92,10 +101,21 @@ function createGitHubCard(userData){
   
   userEmail.setAttribute('href', userData.html_url);
   userEmail.innerText = userData.html_url;
-  // userProfile.textContent = `Profile: ${userEmail}`;
+  userProfile.textContent = `Profile: `;
   userFollowers.textContent = `Followers: ${userData.followers}`;
   userFollowing.textContent = `Following: ${userData.following}`;
   userBio.textContent = `Bio: ${userData.bio}`;
+
+  newCard.append(userImage);
+  newCard.append(userInfo);
+  userInfo.append(userName);
+  userInfo.append(userHandle);
+  userInfo.append(userLocation);
+  userInfo.append(userProfile);
+  userProfile.append(userEmail);
+  userInfo.append(userFollowers);
+  userInfo.append(userFollowing);
+  userInfo.append(userBio);
 
   return newCard
 
